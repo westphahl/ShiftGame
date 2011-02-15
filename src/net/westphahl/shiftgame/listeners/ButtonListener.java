@@ -21,8 +21,10 @@ public class ButtonListener implements ActionListener {
 		boolean result = this.gameWindow.getLogik().move(
 				Integer.parseInt(e.getActionCommand()));
 
+		this.gameWindow.getDialog().setZaehler();
+		
 		if (result) {
-			this.gameWindow.drawButtons(true);
+			this.gameWindow.drawButtons();
 			if (this.gameWindow.getLogik().richtigeReihenfolge()) {
 				if (JOptionPane.showConfirmDialog(this.gameWindow,
 						"Neues Spiel?",
@@ -30,7 +32,6 @@ public class ButtonListener implements ActionListener {
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
 					this.gameWindow.newGame();
-					this.gameWindow.drawButtons(true);
 				} else {
 					System.exit(0);
 				}
